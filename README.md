@@ -34,7 +34,6 @@ A custom node pack for e‑commerce product photography. It provides precise whi
 ```bash
 cd ComfyUI/custom_nodes
 git clone https://github.com/MengYe-Z/ComfyUI-MultiPointWhiteBalance.git
-Restart ComfyUI.
 
 ## 📖 Usage Guide
 
