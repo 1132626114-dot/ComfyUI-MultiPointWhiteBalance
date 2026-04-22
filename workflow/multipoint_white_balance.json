@@ -1,0 +1,1597 @@
+{
+  "id": "f5753bae-f803-4c00-a38a-5f9ec7f51b16",
+  "revision": 0,
+  "last_node_id": 121,
+  "last_link_id": 268,
+  "nodes": [
+    {
+      "id": 20,
+      "type": "LoadImage",
+      "pos": [
+        -2480,
+        630
+      ],
+      "size": [
+        1180,
+        1360
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            102
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "IMAGE A.png",
+        "image"
+      ]
+    },
+    {
+      "id": 52,
+      "type": "PointsEditor",
+      "pos": [
+        -1279.9999406147006,
+        630.0000278689672
+      ],
+      "size": [
+        1069,
+        1383.328125
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bg_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_coords",
+          "type": "STRING",
+          "links": [
+            108,
+            181
+          ]
+        },
+        {
+          "name": "negative_coords",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "bbox",
+          "type": "BBOX",
+          "links": null
+        },
+        {
+          "name": "bbox_mask",
+          "type": "MASK",
+          "links": []
+        },
+        {
+          "name": "cropped_image",
+          "type": "IMAGE",
+          "links": [
+            109,
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "38cccdee6a484a702e4ac1a8b9a3cee0c4ed83f4",
+        "Node name for S&R": "PointsEditor",
+        "imgData": {
+          "type": "temp",
+          "filename": "editor_bg_52_1776844475493.webp"
+        },
+        "points": "PointsEditor",
+        "neg_points": "PointsEditor"
+      },
+      "widgets_values": [
+        "{\"positive\":[{\"x\":461.18615465363104,\"y\":402.75899984383364},{\"x\":1597.2556650658307,\"y\":383.485333091578},{\"x\":1609.8342334422532,\"y\":1357.275189864944},{\"x\":456.80641778834513,\"y\":1351.6656522479975}],\"negative\":[]}",
+        "[{\"x\":461.18615465363104,\"y\":402.75899984383364},{\"x\":1597.2556650658307,\"y\":383.485333091578},{\"x\":1609.8342334422532,\"y\":1357.275189864944},{\"x\":456.80641778834513,\"y\":1351.6656522479975}]",
+        "[]",
+        "[{}]",
+        "[{}]",
+        "xyxy",
+        2016,
+        2016,
+        false,
+        "",
+        null
+      ]
+    },
+    {
+      "id": 53,
+      "type": "GrayBalanceFromPoint",
+      "pos": [
+        -70,
+        1070
+      ],
+      "size": [
+        290,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 109
+        },
+        {
+          "name": "positive_coords",
+          "type": "*",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            136,
+            153,
+            182
+          ]
+        },
+        {
+          "name": "balance_data",
+          "type": "STRING",
+          "links": [
+            206
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GrayBalanceFromPoint"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 63,
+      "type": "PreviewImage",
+      "pos": [
+        800,
+        680
+      ],
+      "size": [
+        1130,
+        1120
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 136
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 67,
+      "type": "PreviewImage",
+      "pos": [
+        1950,
+        680
+      ],
+      "size": [
+        1120,
+        1120
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 154
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 69,
+      "type": "PorterDuffImageComposite",
+      "pos": [
+        460,
+        1290
+      ],
+      "size": [
+        270,
+        160
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 183
+        },
+        {
+          "name": "source_alpha",
+          "type": "MASK",
+          "link": 150
+        },
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 153
+        },
+        {
+          "name": "destination_alpha",
+          "type": "MASK",
+          "link": 159
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            154,
+            268
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PorterDuffImageComposite"
+      },
+      "widgets_values": [
+        "ADD"
+      ]
+    },
+    {
+      "id": 70,
+      "type": "BiRefNet_Hugo",
+      "pos": [
+        -70,
+        1240
+      ],
+      "size": [
+        460,
+        230
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            150,
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-BiRefNet-Hugo",
+        "ver": "d21bef1d029d1b75182b5a05f4629bbd387f594e",
+        "Node name for S&R": "BiRefNet_Hugo"
+      },
+      "widgets_values": [
+        "ZhengPeng7/BiRefNet-portrait",
+        false,
+        "transparency",
+        "auto"
+      ]
+    },
+    {
+      "id": 71,
+      "type": "InvertMask",
+      "pos": [
+        240,
+        1570
+      ],
+      "size": [
+        230,
+        50
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "InvertMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 72,
+      "type": "FeatherMask",
+      "pos": [
+        -60,
+        1520
+      ],
+      "size": [
+        250,
+        180
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            162
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "FeatherMask"
+      },
+      "widgets_values": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "id": 85,
+      "type": "ExposureMatchFromPoint",
+      "pos": [
+        260,
+        1060
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 182
+        },
+        {
+          "name": "positive_coords",
+          "type": "*",
+          "link": 181
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            183
+          ]
+        },
+        {
+          "name": "exposure_data",
+          "type": "STRING",
+          "links": [
+            207
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExposureMatchFromPoint"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 94,
+      "type": "GaussianBlur",
+      "pos": [
+        -70,
+        3380
+      ],
+      "size": [
+        250,
+        190
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 231
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            232,
+            237
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GaussianBlur"
+      },
+      "widgets_values": [
+        15
+      ]
+    },
+    {
+      "id": 98,
+      "type": "PreviewAny",
+      "pos": [
+        -70,
+        780
+      ],
+      "size": [
+        280,
+        240
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 206
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 99,
+      "type": "PreviewAny",
+      "pos": [
+        270,
+        770
+      ],
+      "size": [
+        280,
+        240
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 207
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 100,
+      "type": "LoadImage",
+      "pos": [
+        -2500,
+        2260
+      ],
+      "size": [
+        1180,
+        1360
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            231,
+            233,
+            252
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "IMAGE B.png",
+        "image"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "PointsEditor",
+      "pos": [
+        -1289.999817709901,
+        2260.00002562564
+      ],
+      "size": [
+        1069,
+        1383.328125
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bg_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 232
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_coords",
+          "type": "STRING",
+          "links": [
+            217,
+            262
+          ]
+        },
+        {
+          "name": "negative_coords",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "bbox",
+          "type": "BBOX",
+          "links": null
+        },
+        {
+          "name": "bbox_mask",
+          "type": "MASK",
+          "links": []
+        },
+        {
+          "name": "cropped_image",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "38cccdee6a484a702e4ac1a8b9a3cee0c4ed83f4",
+        "Node name for S&R": "PointsEditor",
+        "imgData": {
+          "type": "temp",
+          "filename": "editor_bg_101_1776844474899.webp"
+        },
+        "points": "PointsEditor",
+        "neg_points": "PointsEditor"
+      },
+      "widgets_values": [
+        "{\"positive\":[{\"x\":461.18615465363104,\"y\":402.75899984383364},{\"x\":1597.2556650658307,\"y\":383.485333091578},{\"x\":1609.8342334422532,\"y\":1357.275189864944},{\"x\":456.80641778834513,\"y\":1351.6656522479975}],\"negative\":[]}",
+        "[{\"x\":461.18615465363104,\"y\":402.75899984383364},{\"x\":1597.2556650658307,\"y\":383.485333091578},{\"x\":1609.8342334422532,\"y\":1357.275189864944},{\"x\":456.80641778834513,\"y\":1351.6656522479975}]",
+        "[]",
+        "[{}]",
+        "[{}]",
+        "xyxy",
+        1970,
+        1970,
+        false,
+        "",
+        null
+      ]
+    },
+    {
+      "id": 102,
+      "type": "GrayBalanceFromPoint",
+      "pos": [
+        -80,
+        2700
+      ],
+      "size": [
+        290,
+        100
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 237
+        },
+        {
+          "name": "positive_coords",
+          "type": "*",
+          "link": 217
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            264
+          ]
+        },
+        {
+          "name": "balance_data",
+          "type": "STRING",
+          "links": [
+            229,
+            251
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GrayBalanceFromPoint"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 103,
+      "type": "PreviewImage",
+      "pos": [
+        790,
+        2310
+      ],
+      "size": [
+        1130,
+        1120
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 254
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 104,
+      "type": "PreviewImage",
+      "pos": [
+        1940,
+        2310
+      ],
+      "size": [
+        1120,
+        1120
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 258
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 105,
+      "type": "PorterDuffImageComposite",
+      "pos": [
+        450,
+        2920
+      ],
+      "size": [
+        270,
+        160
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 256
+        },
+        {
+          "name": "source_alpha",
+          "type": "MASK",
+          "link": 221
+        },
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 257
+        },
+        {
+          "name": "destination_alpha",
+          "type": "MASK",
+          "link": 223
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            258,
+            267
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PorterDuffImageComposite"
+      },
+      "widgets_values": [
+        "ADD"
+      ]
+    },
+    {
+      "id": 106,
+      "type": "BiRefNet_Hugo",
+      "pos": [
+        -80,
+        2870
+      ],
+      "size": [
+        460,
+        230
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 233
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            221,
+            226
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-BiRefNet-Hugo",
+        "ver": "d21bef1d029d1b75182b5a05f4629bbd387f594e",
+        "Node name for S&R": "BiRefNet_Hugo"
+      },
+      "widgets_values": [
+        "ZhengPeng7/BiRefNet-portrait",
+        false,
+        "transparency",
+        "auto"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "InvertMask",
+      "pos": [
+        230,
+        3200
+      ],
+      "size": [
+        230,
+        50
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 225
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            223
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "InvertMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 108,
+      "type": "FeatherMask",
+      "pos": [
+        -70,
+        3150
+      ],
+      "size": [
+        250,
+        180
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 226
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            225
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "FeatherMask"
+      },
+      "widgets_values": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "id": 109,
+      "type": "ExposureMatchFromPoint",
+      "pos": [
+        270,
+        2690
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 264
+        },
+        {
+          "name": "positive_coords",
+          "type": "*",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "exposure_data",
+          "type": "STRING",
+          "links": [
+            230,
+            250
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExposureMatchFromPoint"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 110,
+      "type": "PreviewAny",
+      "pos": [
+        -80,
+        2410
+      ],
+      "size": [
+        280,
+        240
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 229
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 111,
+      "type": "PreviewAny",
+      "pos": [
+        260,
+        2400
+      ],
+      "size": [
+        280,
+        240
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 230
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 113,
+      "type": "ApplyExposureGain",
+      "pos": [
+        280,
+        2250
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 266
+        },
+        {
+          "name": "exposure_data",
+          "type": "*",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            256
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ApplyExposureGain"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 114,
+      "type": "ApplyWhiteBalanceGain",
+      "pos": [
+        -50,
+        2250
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 252
+        },
+        {
+          "name": "balance_data",
+          "type": "*",
+          "link": 251
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            254,
+            257,
+            266
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ApplyWhiteBalanceGain"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 120,
+      "type": "SaveImage",
+      "pos": [
+        290,
+        3330
+      ],
+      "size": [
+        430,
+        390
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 267
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 121,
+      "type": "SaveImage",
+      "pos": [
+        310,
+        1680
+      ],
+      "size": [
+        410,
+        350
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 268
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.2",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    }
+  ],
+  "links": [
+    [
+      102,
+      20,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      108,
+      52,
+      0,
+      53,
+      1,
+      "STRING"
+    ],
+    [
+      109,
+      52,
+      4,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      136,
+      53,
+      0,
+      63,
+      0,
+      "IMAGE"
+    ],
+    [
+      149,
+      52,
+      4,
+      70,
+      0,
+      "IMAGE"
+    ],
+    [
+      150,
+      70,
+      1,
+      69,
+      1,
+      "MASK"
+    ],
+    [
+      153,
+      53,
+      0,
+      69,
+      2,
+      "IMAGE"
+    ],
+    [
+      154,
+      69,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      159,
+      71,
+      0,
+      69,
+      3,
+      "MASK"
+    ],
+    [
+      160,
+      70,
+      1,
+      72,
+      0,
+      "MASK"
+    ],
+    [
+      162,
+      72,
+      0,
+      71,
+      0,
+      "MASK"
+    ],
+    [
+      181,
+      52,
+      0,
+      85,
+      1,
+      "STRING"
+    ],
+    [
+      182,
+      53,
+      0,
+      85,
+      0,
+      "IMAGE"
+    ],
+    [
+      183,
+      85,
+      0,
+      69,
+      0,
+      "IMAGE"
+    ],
+    [
+      206,
+      53,
+      1,
+      98,
+      0,
+      "STRING"
+    ],
+    [
+      207,
+      85,
+      1,
+      99,
+      0,
+      "STRING"
+    ],
+    [
+      217,
+      101,
+      0,
+      102,
+      1,
+      "STRING"
+    ],
+    [
+      221,
+      106,
+      1,
+      105,
+      1,
+      "MASK"
+    ],
+    [
+      223,
+      107,
+      0,
+      105,
+      3,
+      "MASK"
+    ],
+    [
+      225,
+      108,
+      0,
+      107,
+      0,
+      "MASK"
+    ],
+    [
+      226,
+      106,
+      1,
+      108,
+      0,
+      "MASK"
+    ],
+    [
+      229,
+      102,
+      1,
+      110,
+      0,
+      "STRING"
+    ],
+    [
+      230,
+      109,
+      1,
+      111,
+      0,
+      "STRING"
+    ],
+    [
+      231,
+      100,
+      0,
+      94,
+      0,
+      "IMAGE"
+    ],
+    [
+      232,
+      94,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      233,
+      100,
+      0,
+      106,
+      0,
+      "IMAGE"
+    ],
+    [
+      237,
+      94,
+      0,
+      102,
+      0,
+      "IMAGE"
+    ],
+    [
+      250,
+      109,
+      1,
+      113,
+      1,
+      "STRING"
+    ],
+    [
+      251,
+      102,
+      1,
+      114,
+      1,
+      "STRING"
+    ],
+    [
+      252,
+      100,
+      0,
+      114,
+      0,
+      "IMAGE"
+    ],
+    [
+      254,
+      114,
+      0,
+      103,
+      0,
+      "IMAGE"
+    ],
+    [
+      256,
+      113,
+      0,
+      105,
+      0,
+      "IMAGE"
+    ],
+    [
+      257,
+      114,
+      0,
+      105,
+      2,
+      "IMAGE"
+    ],
+    [
+      258,
+      105,
+      0,
+      104,
+      0,
+      "IMAGE"
+    ],
+    [
+      262,
+      101,
+      0,
+      109,
+      1,
+      "STRING"
+    ],
+    [
+      264,
+      102,
+      0,
+      109,
+      0,
+      "IMAGE"
+    ],
+    [
+      266,
+      114,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ],
+    [
+      267,
+      105,
+      0,
+      120,
+      0,
+      "IMAGE"
+    ],
+    [
+      268,
+      69,
+      0,
+      121,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "Noisy / Stained White Background",
+      "bounding": [
+        -2650,
+        2140,
+        5810,
+        1630
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Normal White Background",
+      "bounding": [
+        -2656.0305769861798,
+        498.0080522956714,
+        5810,
+        1630
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.2430442096739871,
+      "offset": [
+        3370.9062330709376,
+        87.53336890028072
+      ]
+    },
+    "frontendVersion": "1.41.21"
+  },
+  "version": 0.4
+}
