@@ -1,4 +1,3 @@
-markdown
 # ComfyUI MultiPoint White Balance
 
 A custom node pack for e‑commerce product photography. It provides precise white balance and exposure correction by manually selecting multiple points on a blurred copy of the image, then applying the calculated gains to the original sharp image.
